@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+<style>
+
+input[type="number"] {
+  padding: 15px;
+  width: 300px;
+margin-left: 550px;
+font-size:20px;
+font-family:times new roman;
+color:#696969;
+font-weight:bold;
+}
+
+select, option {
+ width: 350px;
+height:45px;
+margin-top: 50px;
+margin-left: 550px;
+}
+
+button {
+  padding: 15px 15px;
+  background-color:#708090;
+width:350px;
+  color: white;
+font-weight:bold;
+font-family:elephant;
+  border: none;
+  cursor: pointer;
+margin-top: 50px;
+  margin-left: 550px;
+}
+
+h2 {
+  margin-top: 50px;
+margin-left: 10px;
+
+}
+h1{
+color:darkblue;
+font-family:arial black;
+}
+
+body {
+  background-image: url('weather.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+</style>
+</head>
+<body>
+  <h1 style="background-color:white;height:45px ; width:1500px; " align="center"><font color='grey'>Temperature Converter</font>
+    </h1>
+  <div>
+    <input type="number" id="inputTemperature" placeholder="Enter temperature">
+    <select id="unitSelector">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+<option value="kelvin">Kelvin</option>
+    </select>
+
+<br><br>
+    <button onclick="convertTemperature()">Convert</button>
+    <h2 id="result" align='center'></h2>
+  </div>
+  <script>function convertTemperature() {
+  var inputTemperature = document.getElementById("inputTemperature").value;
+  var unitSelector = document.getElementById("unitSelector");
+  var selectedUnit = unitSelector.options[unitSelector.selectedIndex].value;
+  var resultElement = document.getElementById("result");
+
+  if (selectedUnit === "celsius") {
+    var fahrenheit = (inputTemperature * 9/5) + 32;
+    var kelvin = parseFloat(inputTemperature) + 273.15;
+    resultElement.innerHTML = inputTemperature + " C is equal to " + fahrenheit.toFixed(2) + " F <br>" + kelvin.toFixed(2) + "K";
+  } else if (selectedUnit === "fahrenheit") {
+    var celsius = (inputTemperature - 32) * 5/9;
+    var kelvin = (inputTemperature - 32) * 5/9 + 273.15;
+    resultElement.innerHTML = inputTemperature + " F is equal to " + celsius.toFixed(2) + " C <br>" + kelvin.toFixed(2) + "K";
+  } else if (selectedUnit === "kelvin") {
+    var celsius = parseFloat(inputTemperature) - 273.15;
+    var fahrenheit = (parseFloat(inputTemperature) - 273.15) * 9/5 + 32;
+    resultElement.innerHTML = inputTemperature + "K is equal to " + celsius.toFixed(2) + " C <br> " + fahrenheit.toFixed(2) + " F";
+  }
+}
+
+</script>
+</body>
+</html>
